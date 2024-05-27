@@ -1,0 +1,104 @@
+library(Rcmdr)
+attach(Prestige_New)
+
+getwd() 
+setwd("C:/Users/Suneth-PC/OneDrive/Desktop/BA 62 57") 
+occupations_data <- read.csv("Prestige_New.csv")
+str(occupations_data)
+summary(occupations_data)
+
+
+#Task 3
+min(Prestige_New$income)
+max(Prestige_New$income)
+mean(Prestige_New$income)
+median(Prestige_New$income)
+
+install.packages("DescTools")
+library("DescTools")
+Mode(Prestige_New$income)
+
+#Task 4
+summary(Prestige_New$prestige)
+summary(Prestige_New$education)
+summary(Prestige_New$income)
+
+#Task 5
+
+
+
+# Histogram for prestige
+hist(Prestige_New$prestige, prob = TRUE, main = "Prestige Distribution", xlab = "Prestige", ylab = "Frequency")
+curve(dnorm(x, mean = mean(Prestige_New$prestige), sd = sd(Prestige_New$prestige)), add = TRUE, col = "blue")
+
+
+# Histogram for education
+hist(Prestige_New$education, prob = TRUE, main = "Education Distribution", xlab = "Education", ylab = "Frequency")
+curve(dnorm(x, mean = mean(Prestige_New$education), sd = sd(Prestige_New$education)), add = TRUE, col = "blue")
+
+
+# Histogram for income
+hist(Prestige_New$income, prob = TRUE, main = "Income Distribution", xlab = "Income", ylab = "Frequency")
+curve(dnorm(x, mean = mean(Prestige_New$income), sd = sd(Prestige_New$income)), add = TRUE, col = "blue")
+
+
+# Reset plotting settings
+par(mfrow = c(1, 1))  # Reset to default plotting layout
+
+#Task 6
+
+anova_result <- aov(prestige ~ type, data = Prestige_New)
+
+summary(anova_result)
+
+
+boxplot(prestige ~ type, data = Prestige_New, 
+        main = "Prestige by Occupation Type",
+        xlab = "Occupation Type",
+        ylab = "Prestige")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
